@@ -1,0 +1,95 @@
+{
+  "name": "cappuccino",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Nithin David <webofnithin@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "~6.9.1",
+    "npm": ">=3.10.0"
+  },
+  "scripts": {
+    "prestart": "npm run -s build",
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.js --exec \"node -r dotenv/config -r babel-register\"",
+    "clean": "rimraf dist",
+    "build": "npm run clean && mkdir -p dist && babel src -s -D -d dist",
+    "test": "jest --watch",
+    "lint": "esw -w src test",
+    "postinstall": "npm rebuild node-sass",
+    "build-css": "./bin/build-css",
+    "watch-css": "./bin/watch-css"
+  },
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "bcrypt": "^1.0.2",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "bookshelf": "^0.10.4",
+    "bourbon": "^4.3.4",
+    "express": "^4.15.2",
+    "express-session": "^1.15.5",
+    "knex": "^0.13.0",
+    "morgan": "^1.7.0",
+    "node-sass-middleware": "^0.11.0",
+    "orm": "^3.2.4",
+    "passport": "^0.3.2",
+    "pug": "^2.0.0-beta11",
+    "rimraf": "^2.6.1",
+    "sqlite": "^2.8.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^20.0.0",
+    "babel-register": "^6.24.1",
+    "dotenv": "^4.0.0",
+    "eslint": "^3.19.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jest": "^20.0.0",
+    "eslint-watch": "^3.1.0",
+    "jest": "^20.0.0",
+    "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "plugins": [
+      "import",
+      "jest"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "rules": {
+      "jest/no-focused-tests": 2,
+      "jest/no-identical-title": 2
+    }
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "directories": {
+    "test": "test"
+  }
+}
