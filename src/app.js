@@ -3,12 +3,18 @@ import session from 'express-session';
 import path from 'path';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import routes from './routes';
 import passport from 'passport';
 import sassMiddleware  from 'node-sass-middleware';
+import expressValidator from 'express-validator';
+import expressFlash from 'express-flash';
+
+// Routes
+import routes from './routes';
 
 const app = express();
 app.disable('x-powered-by');
+
+
 
 // View engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -19,7 +25,9 @@ app.use(logger('dev', {
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({ secret: 'keyboard cat' }));
+app.use(expressValidator());
+app.use(expressFlash());
+app.use(session({ secret: 'hope till end' }));
 app.use(passport.initialize());
 app.use(passport.session());
 

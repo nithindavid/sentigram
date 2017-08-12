@@ -1,8 +1,13 @@
 import db from '../../config/db';
 import bcrypt from 'bcrypt';
+import Post from './post';
 
 const User = db.Model.extend({
   tableName: 'users',
+
+  posts() {
+    return this.hasMany(Post);
+  },
 
   initialize() {
     this.on('saving', this.hashPassword);
