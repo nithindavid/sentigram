@@ -1,4 +1,9 @@
 extends layout
 
 block content
-  h1 Feed
+  include partials/feed/new
+  each val in allPosts
+    div
+      p= val.content
+      div
+        h3= val

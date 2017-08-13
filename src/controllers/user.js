@@ -119,7 +119,13 @@ import User from '../models/User';
   logout(req, res) {
     req.logout();
     res.redirect('/');
+  },
+
+  getProfile(req, res) {
+    
   }
+
+
  };
 
  export default UserController;
