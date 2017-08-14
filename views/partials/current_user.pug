@@ -1,9 +1,12 @@
-.current-user
-  .toggle
-    span= currentUserData.name
-    img(src=currentUserData.photo_url)
-  .drop
-    ul
-      li Profile
-      li Logut
+if !!currentUserData
+  .current-user
+    .toggle
+      h6.user__name= currentUserData.name
+      img(src=currentUserData.photo_url)
+    .drop
+      ul
+        li
+          a(href='/'+currentUserData.id) Profile
+        li
+          a(href='/logout') Logout
 

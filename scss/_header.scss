@@ -1,0 +1,61 @@
+header {
+  @include clearfix;
+}
+.logo-wrap {
+  float: left;
+  .logo {
+    max-width: 120px;
+  }
+}
+.current-user {
+  position: relative;
+  float: right;
+  z-index: 99;
+  cursor: pointer;
+  .toggle {
+    text-align: right;
+
+    .user__name {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0;
+      text-transform: capitalize;
+      margin-right: $space-normal;
+    }
+    > img {
+      width: $space-large;
+      border-radius: $space-large;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .drop {
+    padding: 0;
+    position: absolute;
+    top: $space-large;
+    right: 0;
+    width: $space-jumbo*2;
+    padding: $space-slab $space-normal;
+    display: none;
+    background: $color-white;
+    border-radius: $space-small;
+    @include elegent-light-shadow;
+
+    a {
+      color: $medium-gray;
+      font-weight: $font-weight-normal;
+      line-height: 2;
+
+      &:hover {
+        color: $action-color;
+      }
+    }
+  }
+
+  &:hover {
+    .drop {
+      display: block;
+    }
+  }
+}

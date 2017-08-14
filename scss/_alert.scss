@@ -1,0 +1,31 @@
+.alert {
+  position: absolute;
+  width: $space-large*9;
+  @include elegant-card();
+  right: $space-medium;
+  top: $space-medium;
+  padding: $space-smaller $space-medium $space-smaller $space-one;
+  font-size: $font-size-small;
+  background: $color-white;
+
+  &.alert-danger {
+    border-top: $space-micro solid $color-danger;
+  }
+  &.alert-info {
+    border-top: $space-micro solid $color-warning;
+  }
+  &.alert-success {
+    border-top: $space-micro solid $color-success;
+  }
+
+  .close {
+    position: absolute;
+    right: $space-normal;
+    top: $space-slab;
+    cursor: pointer;
+  }
+
+  > .message {
+    padding: $space-small 0;
+  }
+}

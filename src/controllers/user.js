@@ -13,7 +13,6 @@ const UserController = {
       UserService
       .isFollowing(req.user.id, req.params.user_id)
       .then(_isFollowing => {
-
         res.render('profile', {
           title: 'Home',
           allPosts: feedData,

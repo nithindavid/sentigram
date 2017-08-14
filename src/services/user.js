@@ -17,6 +17,7 @@ function fetchFolloweePosts(userId) {
       .select()
       .from('posts')
       .whereIn('user_id', followees_q)
+      .orderBy('id', 'desc')
       .leftJoin('users', 'posts.user_id', 'users.id')
       .then(function(rows) {
         resolve(rows);
@@ -36,6 +37,7 @@ function fetchProfile(userId) {
       .select()
       .from('posts')
       .whereIn('user_id', userId)
+      .leftJoin('users', 'posts.user_id', 'users.id')
       .then(feedData => {
         db.knex
           .select()
@@ -52,7 +54,7 @@ function fetchProfile(userId) {
   });
 }
 
-function isFollowing(followee_id, follower_id) {
+function isFollowing(follower_id, followee_id) {
   return new Promise((resolve, reject) => {
     new UserFollow({ followee_id: followee_id, follower_id: follower_id })
       .fetch()
@@ -60,7 +62,6 @@ function isFollowing(followee_id, follower_id) {
         resolve(!!action);
       })
       .catch(error => {
-        console.log(' ERRRRRRR',action);
         reject(error);
       });
   });

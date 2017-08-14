@@ -1,6 +1,7 @@
 import passport from 'passport';
 import User from '../models/User';
 
+import AuthService from '../services/auth';
 
  const AuthController = {
 
@@ -61,20 +62,20 @@ import User from '../models/User';
         }
       });
 
-    new User({ username: req.body.username })
-    .fetch()
+    AuthService
+    .fetchUser(req.body)
     .then(user => {
       if (!!user) {
         req.flash('errors', { msg: 'Choose a different username.' });
         return res.redirect('/signup');
       } else {
-        new User({ username: req.body.username, name: req.body.name, password: req.body.password, photo_url: `https://randomuser.me/api/portraits/women/${Math.floor(Math.random() * 100)}.jpg` })
-        .save()
+        AuthService
+        .saveUser(req.body)
         .then(user => {
           req.logIn(user, (err) => {
             if (err) { return next(err); }
             req.flash('success', { msg: 'Yey! Account created.' });
-            res.redirect(req.session.returnTo || '/');
+            res.redirect('/');
           });
         })
         .catch((error) => {

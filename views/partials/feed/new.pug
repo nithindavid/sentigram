@@ -1,6 +1,6 @@
 block content
-  form(method='POST')
+  form(method='POST' class='feed__new')
     input(type='hidden', name='_csrf', value=_csrf)
-    textarea(name='content', id='content', placeholder='content', autofocus, required)
+    textarea(name='content', id='content', placeholder='Tell your sad story to the world and cry about it', required)
     button(type='submit')
       | Post

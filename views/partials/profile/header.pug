@@ -1,6 +1,9 @@
-h2= userData.name
-img(src=userData.photo_url)
-if isFollowing
-  button(class='button follow __following' data-user_id=userData.id) Unfollow
-else
-  button(class='button follow' data-user_id=userData.id) Follow
+div.user__profile
+  img(src=userData.photo_url class='user__photo')
+  h2.user__name= userData.name
+    .follow__wrap
+      if userData.id != currentUserData.id
+        if isFollowing
+          button(class='button follow __following' data-user_id=userData.id) Unfollow
+        else
+          button(class='button follow' data-user_id=userData.id) Follow

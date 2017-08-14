@@ -1,0 +1,25 @@
+
+.user__profile {
+  margin-top: $space-larger;
+  .user__photo {
+    width: $space-larger*2;
+    border-radius: $space-larger*2;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .user__name {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    text-transform: capitalize;
+    margin-left: $space-large;
+    font-size: $font-size-mega;
+  }
+}
+
+.button.follow {
+  &.__following {
+    background-color: $color-danger;
+  }
+}

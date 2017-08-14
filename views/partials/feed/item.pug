@@ -1,5 +1,7 @@
-div
-  p= val.content
-  div
-    h3= val.name
-    h4= val.user_id
+div.feed__item
+  div.user
+    a(href='/' + val.user_id class='user__photo')
+      img(src=val.photo_url)
+    h6.user__name
+      a(href='/' + val.user_id)= val.name
+  p.item__content= val.content

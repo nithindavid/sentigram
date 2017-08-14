@@ -1,0 +1,68 @@
+
+.feed__new {
+  @include elegant-card();
+  padding: $space-normal;
+  transition: all .3s $ease-in-circ;
+  margin-top: $space-medium;
+  position: relative;
+
+  button {
+    visibility: hidden;
+    margin-top: $space-medium;
+    top: 0;
+    right: $space-medium;
+    position: absolute;
+    z-index: 9;
+    &:hover {
+      visibility: visible;
+    }
+  }
+  textarea {
+    box-shadow: none;
+    background: $color-background-light;
+    border-color: $color-background;
+    margin-bottom: 0;
+
+    padding-right: $space-jumbo + $space-large;
+
+    &:focus + button,
+    &:active + button {
+      visibility: visible;
+    }
+  }
+}
+
+.feed__wrap {
+  margin-top: $space-larger;
+}
+.feed__item {
+  margin: $space-normal 0;
+
+  .item__content {
+    font-size: $font-size-big;
+    line-height: 1.6;
+    margin-bottom: $space-larger;
+  }
+  .user {
+    text-align: left;
+
+    .user__name {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0;
+      text-transform: capitalize;
+      margin-left: $space-one;
+      font-size: $font-size-default;
+
+      a {
+        color: $color-heading;
+      }
+    }
+    .user__photo > img {
+      width: $space-large;
+      border-radius: $space-large;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
