@@ -7,3 +7,13 @@ div.user__profile
           button(class='button follow __following' data-user_id=userData.id) Unfollow
         else
           button(class='button follow' data-user_id=userData.id) Follow
+    .count_wrap
+      div.count_item
+        h6 Followers
+        h3= followersCount
+      div.count_item
+        h6 Followees
+        h3= followeesCount
+      div.count_item
+        h6 Followees
+        h3= allPosts.length

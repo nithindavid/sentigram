@@ -23,3 +23,16 @@
     background-color: $color-danger;
   }
 }
+
+.count_wrap {
+  margin-top: $space-medium;
+  .count_item {
+    width: 120px;
+    display: inline-block;
+
+    > h6 {
+      font-size: $font-size-small;
+      margin-bottom: 0;
+    }
+  }
+}

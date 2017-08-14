@@ -79,17 +79,16 @@
     .user__name {
       display: inline-block;
       vertical-align: top;
-      margin: 0;
+      margin: $space-normal 0;
       text-transform: capitalize;
       font-size: $font-size-small;
-      margin-bottom: $space-normal;
 
       a {
         color: $color-heading;
       }
     }
     .user__photo > img {
-      width: $space-large;
+      width: $space-large*2.4;
       border-radius: $space-large;
       display: inline-block;
       vertical-align: middle;

@@ -13,12 +13,19 @@ const UserController = {
       UserService
       .isFollowing(req.user.id, req.params.user_id)
       .then(_isFollowing => {
-        res.render('profile', {
-          title: 'Home',
-          allPosts: feedData,
-          userData: userData[0],
-          isFollowing: _isFollowing,
-          currentUserData: req.user.toJSON()
+
+        UserService
+        .fetchCounts(req.params.user_id)
+        .then(({ followersCount, followeesCount }) => {
+          res.render('profile', {
+            title: 'Home',
+            allPosts: feedData,
+            userData: userData[0],
+            isFollowing: _isFollowing,
+            currentUserData: req.user.toJSON(),
+            followersCount: followersCount[0].jockey,
+            followeesCount: followeesCount[0].jockey,
+          });
         });
       })
       .catch(e => {

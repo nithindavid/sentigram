@@ -43,7 +43,7 @@ function fetchFollowableUsers(userId) {
       .from('users')
       .whereNotIn('id', followees_q)
       .whereNot('id', userId)
-      .limit(4)
+      .limit(3)
       .then(function(rows) {
         console.log('%%%%%%%%%', rows);
         resolve(rows);
@@ -81,6 +81,21 @@ function fetchProfile(userId) {
   });
 }
 
+function fetchCounts(userId) {
+  return new Promise((resolve, reject) => {
+  db.knex('user_follows')
+      .count('follower_id as jockey')
+      .where({ follower_id: userId })
+      .then(followersCount => {
+        db.knex('user_follows')
+          .count('followee_id as jockey')
+          .where({ followee_id: userId })
+          .then(followeesCount => {
+            resolve({ followersCount , followeesCount });
+          });
+      });
+  });
+}
 
 function isFollowing(follower_id, followee_id) {
   return new Promise((resolve, reject) => {
@@ -110,4 +125,5 @@ export default {
   fetchProfile,
   isFollowing,
   jsonResponse,
+  fetchCounts,
 };
