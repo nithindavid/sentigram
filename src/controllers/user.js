@@ -2,6 +2,8 @@ import Posts from '../collections/posts';
 import Users from '../collections/users';
 import UserFollow from '../models/user_follow';
 
+import UserService from '../services/user';
+
 const jsonResponse = (res, { message, error, following }) => {
   res.setHeader('Content-Type', 'application/json');
   if (!!message) {
@@ -13,10 +15,22 @@ const jsonResponse = (res, { message, error, following }) => {
 const UserController = {
 
   getProfile(req, res) {
-    Posts.forge({ user_id: req.user.id }).fetch({withRelated: 'user'}).then(_posts => {
-      res.render('feed', {
-        title: 'Home',
-        allPosts: _posts.toJSON()
+    UserService
+    .fetchProfile(req.params.user_id)
+    .then(({ feedData, userData }) => {
+      UserService
+      .isFollowing(req.user.id, req.params.user_id)
+      .then(_isFollowing => {
+
+        res.render('profile', {
+          title: 'Home',
+          allPosts: feedData,
+          userData: userData[0],
+          isFollowing: _isFollowing,
+        });
+      })
+      .catch(e => {
+        console.log('errorr', e);
       });
     });
   },

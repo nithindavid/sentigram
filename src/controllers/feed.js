@@ -6,11 +6,10 @@ import UserService from '../services/user';
 const FeedController = {
 
   getFeed(req, res) {
-    UserService.fetchFolloweePosts(req.user.id).then(xx => {
-      console.log(xx);
+    UserService.fetchFolloweePosts(req.user.id).then(feedData => {
       res.render('feed', {
         title: 'Home',
-        allPosts: xx,
+        allPosts: feedData,
       });
     })
   },

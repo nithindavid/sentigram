@@ -1,0 +1,6 @@
+h2= userData.name
+img(src=userData.photo_url)
+if isFollowing
+  button(class='button follow __following' data-user_id=userData.id) Unfollow
+else
+  button(class='button follow' data-user_id=userData.id) Follow

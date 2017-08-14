@@ -31,4 +31,6 @@ routes.post('/feed', passportConfig.isAuthenticated, feedController.postFeed);
 routes.put('/:followee_id/follow', passportConfig.isAuthenticated, userController.followUser);
 routes.get('/:followee_id/follow', passportConfig.isAuthenticated, userController.followUser);
 
+routes.get('/:user_id', passportConfig.isAuthenticated, userController.getProfile);
+
 export default routes;
