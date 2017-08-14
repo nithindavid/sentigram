@@ -1,18 +1,18 @@
-import Post from '../models/Post';
+import Post from '../models/post';
+import User from '../models/user';
+
+import UserService from '../services/user';
 
 const FeedController = {
-  /**
-   * GET /login
-   * Login page.
-   */
+
   getFeed(req, res) {
-    req.user.posts().fetch().then(_posts => {
-      console.log(_posts);
+    UserService.fetchFolloweePosts(req.user.id).then(xx => {
+      console.log(xx);
       res.render('feed', {
         title: 'Home',
-        allPosts: _posts
+        allPosts: xx,
       });
-   });
+    })
   },
 
   postFeed (req, res) {

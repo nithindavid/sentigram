@@ -1,20 +1,22 @@
 import db from '../../config/db';
 import bcrypt from 'bcrypt';
 import Post from './post';
+import UserFollow from './user_follow';
 
 const User = db.Model.extend({
   tableName: 'users',
+  hasTimestamps: true,
 
   posts() {
     return this.hasMany(Post);
   },
 
   following: function() {
-    return this.belongsToMany(User, 'follows', 'user_id', 'follower_id');
+    return this.belongsToMany(User, 'user_follows', 'followee_id', 'follower_id');
   },
 
   followers: function() {
-    return this.belongsToMany(User, 'follows', 'follower_id', 'user_id');
+    return this.belongsToMany(User, 'user_follows', 'follower_id', 'followee_id');
   },
 
   initialize() {

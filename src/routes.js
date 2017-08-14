@@ -3,8 +3,9 @@ import User from './models/user';
 
 import passportConfig from '../config/passport';
 // Controllers
-import userController from './controllers/user';
+import authController from './controllers/auth';
 import feedController from './controllers/feed';
+import userController from './controllers/user';
 
 const routes = Router();
 /**
@@ -19,13 +20,15 @@ routes.get('/', (req, res) => {
   }
 });
 
-routes.get('/login', userController.getLogin);
-routes.post('/login', userController.postLogin);
-routes.get('/signup', userController.getSignup);
-routes.post('/signup', userController.postSignup);
-routes.get('/logout', userController.logout);
+routes.get('/login', authController.getLogin);
+routes.post('/login', authController.postLogin);
+routes.get('/signup', authController.getSignup);
+routes.post('/signup', authController.postSignup);
+routes.get('/logout', authController.logout);
 
 routes.get('/feed', passportConfig.isAuthenticated, feedController.getFeed);
 routes.post('/feed', passportConfig.isAuthenticated, feedController.postFeed);
+routes.put('/:followee_id/follow', passportConfig.isAuthenticated, userController.followUser);
+routes.get('/:followee_id/follow', passportConfig.isAuthenticated, userController.followUser);
 
 export default routes;

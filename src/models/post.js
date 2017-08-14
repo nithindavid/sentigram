@@ -3,6 +3,8 @@ import User from './user';
 
 const Post = db.Model.extend({
   tableName: 'posts',
+  hasTimestamps: true,
+
   user() {
     return this.belongsTo(User);
   },
