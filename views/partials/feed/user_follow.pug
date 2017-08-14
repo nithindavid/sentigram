@@ -1,0 +1,7 @@
+div.user-follow__item
+  div.user
+    a(href='/' + _user.id class='user__photo')
+      img(src=_user.photo_url)
+    h5.user__name
+      a(href='/' + _user.id)= _user.name
+    button(class='button follow' data-user_id=_user.id) Follow

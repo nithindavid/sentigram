@@ -5,3 +5,7 @@ block content
   .feed__wrap
     each val in allPosts
       include partials/feed/item
+  .user-follow__wrap
+    h6 More poorsouls to follow
+    each _user in followableUsers
+      include partials/feed/user_follow

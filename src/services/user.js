@@ -29,6 +29,32 @@ function fetchFolloweePosts(userId) {
   });
 }
 
+function fetchFollowableUsers(userId) {
+  return new Promise((resolve, reject) => {
+    let allPosts = [];
+
+    let followees_q = db.knex
+      .select('followee_id')
+      .from('user_follows')
+      .where({ follower_id: userId });
+
+    db.knex
+      .select()
+      .from('users')
+      .whereNotIn('id', followees_q)
+      .whereNot('id', userId)
+      .limit(4)
+      .then(function(rows) {
+        console.log('%%%%%%%%%', rows);
+        resolve(rows);
+      })
+      .catch(e => {
+        console.log('errorr', e);
+        reject(e);
+      });
+  });
+}
+
 function fetchProfile(userId) {
   return new Promise((resolve, reject) => {
     let allPosts = [];
@@ -37,6 +63,7 @@ function fetchProfile(userId) {
       .select()
       .from('posts')
       .whereIn('user_id', userId)
+      .orderBy('id', 'desc')
       .leftJoin('users', 'posts.user_id', 'users.id')
       .then(feedData => {
         db.knex
@@ -53,6 +80,7 @@ function fetchProfile(userId) {
       });
   });
 }
+
 
 function isFollowing(follower_id, followee_id) {
   return new Promise((resolve, reject) => {
@@ -78,6 +106,7 @@ const jsonResponse = (res, { message, error, following }) => {
 
 export default {
   fetchFolloweePosts,
+  fetchFollowableUsers,
   fetchProfile,
   isFollowing,
   jsonResponse,

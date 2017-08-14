@@ -7,7 +7,6 @@ exports.up = function(knex) {
       table.string('username').unique();
       table.string('password');
       table.string('photo_url');
-      table.timestamps();
     });
 };
 exports.down = function(knex) {

@@ -5,7 +5,6 @@ import UserFollow from './user_follow';
 
 const User = db.Model.extend({
   tableName: 'users',
-  hasTimestamps: true,
 
   posts() {
     return this.hasMany(Post);

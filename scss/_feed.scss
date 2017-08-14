@@ -66,3 +66,33 @@
     }
   }
 }
+
+.user-follow__wrap {
+  .user-follow__item {
+    width: 150px;
+    text-align: center;
+    @include elegant-card();
+    margin: $space-normal;
+    padding: $space-slab $space-small;
+    display: inline-block;
+
+    .user__name {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0;
+      text-transform: capitalize;
+      font-size: $font-size-small;
+      margin-bottom: $space-normal;
+
+      a {
+        color: $color-heading;
+      }
+    }
+    .user__photo > img {
+      width: $space-large;
+      border-radius: $space-large;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
