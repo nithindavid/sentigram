@@ -1,15 +1,18 @@
-extends ../layout
+extends ../auth
 
 block content
-  .page-header
-    h3 Sign up
-  form(method='POST')
+  form(method='POST' class='auth-box')
+    .page-header
+      h3 Sign up
     input(type='hidden', name='_csrf', value=_csrf)
     label(for='name') Name
-      input(type='text', name='name', id='name', placeholder='Email', autofocus, required)
+      input(type='text', name='name', id='name', autofocus, required)
     label(for='username') username
-      input(type='text', name='username', id='username', placeholder='Email', autofocus, required)
+      input(type='text', name='username', id='username', autofocus, required)
     label(for='password') Password
-      input(type='password', name='password', id='password', placeholder='Password', required)
+      input(type='password', name='password', id='password', required)
+    p
+      | Already demotivated? 
+      a(href="/login") Sign In
     button.btn.btn-success(type='submit')
       | Signup

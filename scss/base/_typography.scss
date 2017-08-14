@@ -18,7 +18,7 @@ h6 {
   line-height: $heading-line-height;
   margin: 0 0 $small-spacing;
   color: $color-heading;
-  font-weight: $font-weight-bold;
+  font-weight: $font-weight-medium;
 }
 
 p {
@@ -46,25 +46,25 @@ hr {
 }
 
 h1 {
-    font-size: $font-size-giga*1.1;
+    font-size: $font-size-giga;
 }
 
 h2 {
-    font-size: $font-size-mega*1.1;
+    font-size: $font-size-mega;
 }
 
 h3 {
-    font-size: $font-size-bigger*1.1;
+    font-size: $font-size-bigger;
 }
 
 h4 {
-    font-size: $font-size-big*1.1;
+    font-size: $font-size-big;
 }
 
 h5 {
-    font-size: $font-size-large*1.1;
+    font-size: $font-size-large;
 }
 
 h6 {
-    font-size: $font-size-medium*1.1;
+    font-size: $font-size-medium;
 }

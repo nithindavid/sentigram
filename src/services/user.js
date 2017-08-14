@@ -66,8 +66,18 @@ function isFollowing(followee_id, follower_id) {
   });
 }
 
+const jsonResponse = (res, { message, error, following }) => {
+  res.setHeader('Content-Type', 'application/json');
+  if (!!message) {
+    res.send(JSON.stringify({ message, following }));
+  } else {
+    res.end(JSON.stringify({error}));
+  }
+}
+
 export default {
   fetchFolloweePosts,
   fetchProfile,
   isFollowing,
+  jsonResponse,
 };

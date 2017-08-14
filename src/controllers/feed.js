@@ -10,6 +10,7 @@ const FeedController = {
       res.render('feed', {
         title: 'Home',
         allPosts: feedData,
+        currentUserData: req.user.toJSON()
       });
     })
   },

@@ -9,9 +9,9 @@
   font-family: $base-font-family;
   font-size: $base-font-size;
   -webkit-font-smoothing: antialiased;
-  font-weight: $font-weight-normal;
+  font-weight: $font-weight-medium;
   line-height: 1;
-  padding: $small-spacing $base-spacing;
+  padding: $space-one $base-spacing;
   text-align: center;
   text-decoration: none;
   transition: background-color $base-duration $base-timing;

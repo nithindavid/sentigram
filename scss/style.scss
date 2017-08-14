@@ -1,8 +1,77 @@
 @import "base/base";
 
-
 .button.follow {
   &.__following {
     background-color: $color-danger;
   }
+}
+
+// Base box styles
+body {
+
+  .container {
+    height: 100%;
+
+    max-width: $app-width;
+    margin: 0 auto;
+
+    background: $color-white;
+    padding: $space-medium;
+  }
+
+  .logo-wrap {
+    .logo {
+      max-width: 120px;
+    }
+  }
+}
+
+// Auth layouts
+body.auth {
+  background: url(/images/tyler_bg.png) right center no-repeat;
+  background-size: 700px;
+  height: 560px;
+}
+.auth-wrap {
+  max-width: $desktop-width;
+  margin: 0 auto;
+
+  .auth-box {
+    width: $phone-width;
+    margin-top: $space-jumbo*3.3;
+    label {
+      font-size: $font-size-small;
+      color: $color-heading;
+
+      margin-top: $space-medium;
+    }
+    input {
+      border-width: 0px;
+      border-bottom: 1px solid $color-border;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    button {
+      background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+    }
+  }
+}
+
+
+.current-user {
+  .drop {
+    padding: 0;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 150px;
+    display: none;
+  }
+}
+
+ul li:hover ul {
+  display: block;
+  opacity: 1;
+  visibility: visible;
 }

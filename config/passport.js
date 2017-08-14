@@ -28,7 +28,9 @@ passport.use(new Strategy({ usernameField: 'username' }, (username, password, do
       bcrypt.compare(password, user.attributes.password, (err, isMatch) => {
         if (err) { return done(err); }
         if (isMatch) {
-          return done(null, user.toJSON());
+          let currentUser = user.toJSON();
+          delete currentUser.password;
+          return done(null, currentUser);
         }
         return done(null, false, { msg: 'Invalid email or password.' });
       });
